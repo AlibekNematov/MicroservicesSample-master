@@ -50,6 +50,7 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/showusers:latest -f ./.venv/Dockerfile.showusers .
           docker push ${{ secrets.DOCKER_USERNAME }}/showusers:latest
   build-and-push-to-yc:
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
